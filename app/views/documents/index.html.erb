@@ -1,0 +1,16 @@
+<br/>
+<%= link_to "Add New Document", new_document_path, class: "btn btn-primary" %>
+
+<% if @documents.present? %>
+  <h2>this is index</h2>
+
+  <% @documents.each do |file| %>
+    <p>
+      <%= file.title %> - 
+      <%= link_to "Delete", document_path(file), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+    </p>
+  <% end %>
+<% else %>
+  <p>No documents found.</p>
+  <%= link_to "Add New Document", new_document_path, class: "btn btn-primary" %>
+<% end %>
