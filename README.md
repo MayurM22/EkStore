@@ -39,8 +39,8 @@ psql --version
 
 2️⃣ Clone the Repository
 
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
+git clone [repo_link]
+cd EkStore
 
 3️⃣ Install Gems
 
