@@ -1,0 +1,488 @@
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO public /*application='EkStore'*/[0m
+  [1m[35m (42.0ms)[0m  [1m[35mCREATE DATABASE "ek_store_development" ENCODING = 'unicode' /*application='EkStore'*/[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mSET search_path TO public /*application='EkStore'*/[0m
+  [1m[35m (60.2ms)[0m  [1m[35mCREATE DATABASE "ek_store_test" ENCODING = 'unicode' /*application='EkStore'*/[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY) /*application='EkStore'*/[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='EkStore'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4405146332928492270) /*application='EkStore'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='EkStore'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='EkStore'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-08-14 18:11:35.250476', '2025-08-14 18:11:35.250479') RETURNING "key" /*application='EkStore'*/[0m
+Migrating to DeviseCreateUsers (20250814180952)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='EkStore'*/[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='EkStore'*/[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email") /*application='EkStore'*/[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token") /*application='EkStore'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250814180952') RETURNING "version" /*application='EkStore'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*application='EkStore'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4405146332928492270) /*application='EkStore'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='EkStore'*/[0m
+Started GET "/users/sign_up" for 127.0.0.1 at 2025-08-14 23:51:42 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='EkStore'*/[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_error_messages.html.erb (Duration: 0.9ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 12.5ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 21.0ms | GC: 0.8ms)
+Completed 200 OK in 117ms (Views: 47.1ms | ActiveRecord: 6.7ms (0 queries, 0 cached) | GC: 17.6ms)
+
+
+Started GET "/assets/application-8b441ae0.css" for 127.0.0.1 at 2025-08-14 23:51:42 +0530
+Started GET "/assets/application-bfcdf840.js" for 127.0.0.1 at 2025-08-14 23:51:42 +0530
+Started GET "/assets/turbo.min-3a2e143f.js" for 127.0.0.1 at 2025-08-14 23:51:42 +0530
+Started GET "/assets/controllers/hello_controller-708796bd.js" for 127.0.0.1 at 2025-08-14 23:51:43 +0530
+Started GET "/assets/controllers/index-ee64e1f1.js" for 127.0.0.1 at 2025-08-14 23:51:43 +0530
+Started GET "/assets/stimulus.min-4b1e420e.js" for 127.0.0.1 at 2025-08-14 23:51:43 +0530
+Started GET "/assets/stimulus-loading-1fc53fe7.js" for 127.0.0.1 at 2025-08-14 23:51:43 +0530
+Started GET "/assets/controllers/application-3affb389.js" for 127.0.0.1 at 2025-08-14 23:51:43 +0530
+Started GET "/" for 127.0.0.1 at 2025-08-14 23:51:56 +0530
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 39ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-08-14 23:51:56 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 10.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.9ms | GC: 0.0ms)
+Completed 200 OK in 38ms (Views: 15.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2025-08-14 23:52:07 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_error_messages.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 3.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | GC: 0.0ms)
+Completed 200 OK in 26ms (Views: 6.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.9ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-08-14 23:54:03 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 1.2ms | GC: 0.6ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 3.9ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | GC: 0.6ms)
+Completed 200 OK in 25ms (Views: 6.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2025-08-14 23:54:16 +0530
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='EkStore',controller='registrations'*/[0m
+  [1m[36mUser Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'mayurmahajan2222@gmail.com' LIMIT 1 /*action='create',application='EkStore',controller='registrations'*/[0m
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES ('mayurmahajan2222@gmail.com', '$2a$12$0HCfSrk9NIJtYU4VK81k2eG/2Av8KvX0i3fuyY/xOqq6QOE./elwu', NULL, NULL, NULL, '2025-08-14 18:24:16.492811', '2025-08-14 18:24:16.492811') RETURNING "id" /*action='create',application='EkStore',controller='registrations'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT /*action='create',application='EkStore',controller='registrations'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 408ms (ActiveRecord: 3.5ms (2 queries, 0 cached) | GC: 23.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-08-14 23:54:16 +0530
+Processing by HomeController#index as TURBO_STREAM
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | GC: 0.0ms)
+Completed 200 OK in 23ms (Views: 6.0ms | ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-08-14 23:55:42 +0530
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 17ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-08-14 23:55:42 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 4.2ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | GC: 0.3ms)
+Completed 200 OK in 25ms (Views: 6.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2025-08-14 23:55:49 +0530
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'mayurmahajan2222@gmail.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='EkStore',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 331ms (ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-08-14 23:55:49 +0530
+Processing by HomeController#index as TURBO_STREAM
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | GC: 0.0ms)
+Completed 200 OK in 9ms (Views: 1.2ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-08-14 23:55:56 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | GC: 0.0ms)
+Completed 200 OK in 25ms (Views: 2.5ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-08-14 23:56:05 +0530
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 10ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-08-14 23:56:05 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 4.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | GC: 0.0ms)
+Completed 200 OK in 25ms (Views: 7.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-08-15 00:00:04 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 1.5ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 5.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.6ms | GC: 0.0ms)
+Completed 200 OK in 35ms (Views: 13.9ms | ActiveRecord: 5.3ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2025-08-15 00:00:06 +0530
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'mayurmahajan2222@gmail.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='EkStore',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 342ms (ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 11.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-08-15 00:00:06 +0530
+Processing by HomeController#index as TURBO_STREAM
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.0ms)
+Completed 200 OK in 13ms (Views: 2.7ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2025-08-15 00:00:14 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-08-15 00:00:14 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/" for 127.0.0.1 at 2025-08-15 00:02:57 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 19.2ms | GC: 12.7ms)
+Completed 200 OK in 55ms (Views: 25.2ms | ActiveRecord: 3.0ms (1 query, 0 cached) | GC: 27.4ms)
+
+
+Started DELETE "/users/sign_out?_method=delete" for 127.0.0.1 at 2025-08-15 00:03:00 +0530
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='destroy',application='EkStore',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 34ms (ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 17.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-08-15 00:03:00 +0530
+Processing by HomeController#index as TURBO_STREAM
+Completed 401 Unauthorized in 8ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-08-15 00:03:00 +0530
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 1.6ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 6.8ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | GC: 0.6ms)
+Completed 200 OK in 26ms (Views: 11.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-08-15 00:03:23 +0530
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 16ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-08-15 00:03:23 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 4.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | GC: 0.0ms)
+Completed 200 OK in 27ms (Views: 8.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2025-08-15 00:03:27 +0530
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'mayurmahajan2222@gmail.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='EkStore',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 333ms (ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-08-15 00:03:27 +0530
+Processing by HomeController#index as TURBO_STREAM
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | GC: 0.0ms)
+Completed 200 OK in 10ms (Views: 1.2ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/users/sign_out?_method=delete" for 127.0.0.1 at 2025-08-15 00:03:34 +0530
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='destroy',application='EkStore',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 32ms (ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 8.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-08-15 00:03:34 +0530
+Processing by HomeController#index as TURBO_STREAM
+Completed 401 Unauthorized in 17ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-08-15 00:03:34 +0530
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 3.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | GC: 0.0ms)
+Completed 200 OK in 24ms (Views: 6.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-08-15 00:03:43 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 3.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | GC: 0.0ms)
+Completed 200 OK in 26ms (Views: 7.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-08-15 00:03:48 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 3.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | GC: 0.9ms)
+Completed 200 OK in 27ms (Views: 7.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.3ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2025-08-15 00:03:50 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_error_messages.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 3.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | GC: 0.0ms)
+Completed 200 OK in 22ms (Views: 5.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-08-15 00:03:51 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 1.0ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 4.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | GC: 0.0ms)
+Completed 200 OK in 25ms (Views: 6.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2025-08-15 00:03:57 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_error_messages.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 3.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | GC: 0.0ms)
+Completed 200 OK in 12ms (Views: 5.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2025-08-15 00:03:57 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_error_messages.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 4.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | GC: 0.0ms)
+Completed 200 OK in 23ms (Views: 7.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-08-15 00:04:18 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 1.5ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 7.1ms | GC: 0.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | GC: 0.7ms)
+Completed 200 OK in 45ms (Views: 16.3ms | ActiveRecord: 3.5ms (0 queries, 0 cached) | GC: 7.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2025-08-15 00:04:21 +0530
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'mayurmahajan2222@gmail.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='EkStore',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 323ms (ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-08-15 00:04:21 +0530
+Processing by HomeController#index as TURBO_STREAM
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.0ms | GC: 0.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | GC: 1.7ms)
+Completed 200 OK in 16ms (Views: 4.9ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 4.3ms)
+
+
+Started DELETE "/users/sign_out?_method=delete" for 127.0.0.1 at 2025-08-15 00:04:24 +0530
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='destroy',application='EkStore',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 39ms (ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 17.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-08-15 00:04:24 +0530
+Processing by HomeController#index as TURBO_STREAM
+Completed 401 Unauthorized in 8ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.8ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-08-15 00:04:24 +0530
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 1.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | GC: 0.0ms)
+Completed 200 OK in 9ms (Views: 2.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-08-15 00:04:27 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 3.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | GC: 0.0ms)
+Completed 200 OK in 25ms (Views: 5.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2025-08-15 00:04:30 +0530
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'mayurmahajan2222@gmail.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='EkStore',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 315ms (ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-08-15 00:04:30 +0530
+Processing by HomeController#index as TURBO_STREAM
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.0ms)
+Completed 200 OK in 15ms (Views: 2.2ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-08-15 00:05:13 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | GC: 0.1ms)
+Completed 200 OK in 29ms (Views: 6.2ms | ActiveRecord: 4.2ms (1 query, 0 cached) | GC: 0.1ms)
+
+
+Started DELETE "/users/sign_out?_method=delete" for 127.0.0.1 at 2025-08-15 00:05:16 +0530
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='destroy',application='EkStore',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 24ms (ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-08-15 00:05:16 +0530
+Processing by HomeController#index as TURBO_STREAM
+Completed 401 Unauthorized in 15ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-08-15 00:05:16 +0530
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 1.5ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 5.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.3ms | GC: 6.0ms)
+Completed 200 OK in 36ms (Views: 17.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 6.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2025-08-15 00:05:18 +0530
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'mayurmahajan2222@gmail.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='EkStore',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 332ms (ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-08-15 00:05:18 +0530
+Processing by HomeController#index as TURBO_STREAM
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | GC: 0.0ms)
+Completed 200 OK in 10ms (Views: 1.4ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-08-15 00:07:37 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | GC: 0.1ms)
+Completed 200 OK in 30ms (Views: 4.2ms | ActiveRecord: 4.3ms (1 query, 0 cached) | GC: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-08-15 00:08:24 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | GC: 0.2ms)
+Completed 200 OK in 25ms (Views: 6.9ms | ActiveRecord: 2.7ms (1 query, 0 cached) | GC: 1.0ms)
+
+
