@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :documents
+  get '/d/:share_token', to: 'documents#public_show', as: 'public_document'
+
 end

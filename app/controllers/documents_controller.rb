@@ -1,9 +1,12 @@
 class DocumentsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:public_show]
   before_action :set_document, only: [:destroy, :show]
 
   def index
     @documents = current_user.documents
+  end
+
+  def show
   end
 
   def new
@@ -23,6 +26,11 @@ class DocumentsController < ApplicationController
   def destroy
     @document.destroy
     redirect_to documents_path, notice: "Document deleted successfully."
+  end
+
+  def public_show
+    @document = Document.find_by!(share_token: params[:share_token])
+    # render a view that allows public download
   end
 
   private

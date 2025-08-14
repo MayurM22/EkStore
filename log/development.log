@@ -1572,3 +1572,537 @@ Processing by DocumentsController#new as HTML
 Completed 200 OK in 9ms (Views: 2.3ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
 
 
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4405146332928492270) /*application='EkStore'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='EkStore'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='EkStore'*/[0m
+Migrating to AddShareTokenToDocuments (20250814202854)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='EkStore'*/[0m
+  [1m[35m (10.3ms)[0m  [1m[35mALTER TABLE "documents" ADD "share_token" character varying /*application='EkStore'*/[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE INDEX "index_documents_on_share_token" ON "documents" ("share_token") /*application='EkStore'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250814202854') RETURNING "version" /*application='EkStore'*/[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT /*application='EkStore'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(4405146332928492270) /*application='EkStore'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='EkStore'*/[0m
+Started GET "/documents" for 127.0.0.1 at 2025-08-15 02:02:30 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='EkStore'*/[0m
+Processing by DocumentsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering documents/index.html.erb within layouts/application
+  [1m[36mDocument Load (0.4ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."user_id" = 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  ↳ app/views/documents/index.html.erb:3
+  Rendered documents/index.html.erb within layouts/application (Duration: 13.6ms | GC: 0.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.9ms | GC: 0.7ms)
+Completed 500 Internal Server Error in 73ms (ActiveRecord: 13.4ms (2 queries, 0 cached) | GC: 14.7ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"public_show", :controller=>"documents", :share_token=>nil}, missing required keys: [:share_token])
+Caused by: ActionController::UrlGenerationError (No route matches {:action=>"public_show", :controller=>"documents", :share_token=>nil}, missing required keys: [:share_token])
+
+Information for: ActionView::Template::Error (No route matches {:action=>"public_show", :controller=>"documents", :share_token=>nil}, missing required keys: [:share_token]):
+     7:     <p>
+     8:       <%= doc.title %> - 
+     9:       <%= link_to "Delete", document_path(doc), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> |
+    10:       <%= link_to "Share", public_document_url(doc.share_token), target: "_blank" %>
+    11:     </p>
+    12:   <% end %>
+    13: <% else %>
+  
+app/views/documents/index.html.erb:10
+app/views/documents/index.html.erb:6
+
+Information for cause: ActionController::UrlGenerationError (No route matches {:action=>"public_show", :controller=>"documents", :share_token=>nil}, missing required keys: [:share_token]):
+  
+app/views/documents/index.html.erb:10
+app/views/documents/index.html.erb:6
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-08-15 02:02:30 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/" for 127.0.0.1 at 2025-08-15 02:03:22 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | GC: 3.5ms)
+Completed 200 OK in 17ms (Views: 8.9ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 3.5ms)
+
+
+Started GET "/documents" for 127.0.0.1 at 2025-08-15 02:03:24 +0530
+Processing by DocumentsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering documents/index.html.erb within layouts/application
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."user_id" = 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  ↳ app/views/documents/index.html.erb:3
+  Rendered documents/index.html.erb within layouts/application (Duration: 4.3ms | GC: 1.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | GC: 1.2ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.8ms (2 queries, 0 cached) | GC: 1.2ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"public_show", :controller=>"documents", :share_token=>nil}, missing required keys: [:share_token])
+Caused by: ActionController::UrlGenerationError (No route matches {:action=>"public_show", :controller=>"documents", :share_token=>nil}, missing required keys: [:share_token])
+
+Information for: ActionView::Template::Error (No route matches {:action=>"public_show", :controller=>"documents", :share_token=>nil}, missing required keys: [:share_token]):
+     7:     <p>
+     8:       <%= doc.title %> - 
+     9:       <%= link_to "Delete", document_path(doc), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> |
+    10:       <%= link_to "Share", public_document_url(doc.share_token), target: "_blank" %>
+    11:     </p>
+    12:   <% end %>
+    13: <% else %>
+  
+app/views/documents/index.html.erb:10
+app/views/documents/index.html.erb:6
+
+Information for cause: ActionController::UrlGenerationError (No route matches {:action=>"public_show", :controller=>"documents", :share_token=>nil}, missing required keys: [:share_token]):
+  
+app/views/documents/index.html.erb:10
+app/views/documents/index.html.erb:6
+Started GET "/documents" for 127.0.0.1 at 2025-08-15 02:04:14 +0530
+Processing by DocumentsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering documents/index.html.erb within layouts/application
+  [1m[36mDocument Load (1.0ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."user_id" = 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  ↳ app/views/documents/index.html.erb:3
+  Rendered documents/index.html.erb within layouts/application (Duration: 4.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.3ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"public_show", :controller=>"documents", :share_token=>nil}, missing required keys: [:share_token])
+Caused by: ActionController::UrlGenerationError (No route matches {:action=>"public_show", :controller=>"documents", :share_token=>nil}, missing required keys: [:share_token])
+
+Information for: ActionView::Template::Error (No route matches {:action=>"public_show", :controller=>"documents", :share_token=>nil}, missing required keys: [:share_token]):
+     7:     <p>
+     8:       <%= doc.title %> - 
+     9:       <%= link_to "Delete", document_path(doc), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> |
+    10:       <%= link_to "Share", public_document_url(doc.share_token), target: "_blank" %>
+    11:     </p>
+    12:   <% end %>
+    13: <% else %>
+  
+app/views/documents/index.html.erb:10
+app/views/documents/index.html.erb:6
+
+Information for cause: ActionController::UrlGenerationError (No route matches {:action=>"public_show", :controller=>"documents", :share_token=>nil}, missing required keys: [:share_token]):
+  
+app/views/documents/index.html.erb:10
+app/views/documents/index.html.erb:6
+Started GET "/documents" for 127.0.0.1 at 2025-08-15 02:04:15 +0530
+Processing by DocumentsController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering documents/index.html.erb within layouts/application
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."user_id" = 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  ↳ app/views/documents/index.html.erb:3
+  Rendered documents/index.html.erb within layouts/application (Duration: 3.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.4ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"public_show", :controller=>"documents", :share_token=>nil}, missing required keys: [:share_token])
+Caused by: ActionController::UrlGenerationError (No route matches {:action=>"public_show", :controller=>"documents", :share_token=>nil}, missing required keys: [:share_token])
+
+Information for: ActionView::Template::Error (No route matches {:action=>"public_show", :controller=>"documents", :share_token=>nil}, missing required keys: [:share_token]):
+     7:     <p>
+     8:       <%= doc.title %> - 
+     9:       <%= link_to "Delete", document_path(doc), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> |
+    10:       <%= link_to "Share", public_document_url(doc.share_token), target: "_blank" %>
+    11:     </p>
+    12:   <% end %>
+    13: <% else %>
+  
+app/views/documents/index.html.erb:10
+app/views/documents/index.html.erb:6
+
+Information for cause: ActionController::UrlGenerationError (No route matches {:action=>"public_show", :controller=>"documents", :share_token=>nil}, missing required keys: [:share_token]):
+  
+app/views/documents/index.html.erb:10
+app/views/documents/index.html.erb:6
+Started GET "/documents" for 127.0.0.1 at 2025-08-15 02:04:47 +0530
+Processing by DocumentsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering documents/index.html.erb within layouts/application
+  [1m[36mDocument Load (0.2ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."user_id" = 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  ↳ app/views/documents/index.html.erb:3
+  Rendered documents/index.html.erb within layouts/application (Duration: 1.8ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | GC: 0.2ms)
+Completed 200 OK in 12ms (Views: 4.5ms | ActiveRecord: 0.6ms (2 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/documents/new" for 127.0.0.1 at 2025-08-15 02:04:51 +0530
+Processing by DocumentsController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='EkStore',controller='documents'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering documents/new.html.erb within layouts/application
+  Rendered documents/new.html.erb within layouts/application (Duration: 6.5ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | GC: 0.6ms)
+Completed 200 OK in 15ms (Views: 7.8ms | ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.9ms)
+
+
+Started POST "/documents" for 127.0.0.1 at 2025-08-15 02:05:13 +0530
+Processing by DocumentsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "document"=>{"title"=>"saurabh", "description"=>"this is saurabhs doc", "file"=>#<ActionDispatch::Http::UploadedFile:0x00007708466d56f8 @tempfile=#<Tempfile:/tmp/RackMultipart20250815-18755-ilwbfj.1>, @content_type="application/octet-stream", @original_filename="wget-log.1", @headers="Content-Disposition: form-data; name=\"document[file]\"; filename=\"wget-log.1\"\r\nContent-Type: application/octet-stream\r\n">}, "commit"=>"Upload"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='EkStore',controller='documents'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mDocument Create (5.0ms)[0m  [1m[32mINSERT INTO "documents" ("user_id", "title", "description", "file", "created_at", "updated_at", "share_token") VALUES (1, 'saurabh', 'this is saurabhs doc', NULL, '2025-08-14 20:35:13.151453', '2025-08-14 20:35:13.151453', 'c61f4cf04d') RETURNING "id" /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = 3 AND "active_storage_attachments"."record_type" = 'Document' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 3 AND "active_storage_attachments"."record_type" = 'Document' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ('rvdrd4k69u8hofyoil3hs5vbkdjk', 'wget-log.1', 'application/octet-stream', '{"identified":true}', 'local', 365, 'w3gtYAKQRWz+FVkNWUPb7A==', '2025-08-14 20:35:13.195327') RETURNING "id" /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ('file', 'Document', 3, 3, '2025-08-14 20:35:13.198850') RETURNING "id" /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mDocument Update (0.4ms)[0m  [1m[33mUPDATE "documents" SET "updated_at" = '2025-08-14 20:35:13.203600' WHERE "documents"."id" = 3 /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+[36m  Disk Storage (1.1ms) [0m[32mUploaded file to key: rvdrd4k69u8hofyoil3hs5vbkdjk (checksum: w3gtYAKQRWz+FVkNWUPb7A==)[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Blob Update (3.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = '{"identified":true,"analyzed":true}' WHERE "active_storage_blobs"."id" = 3 /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = 3 /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."id" = 3 /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mDocument Update (0.2ms)[0m  [1m[33mUPDATE "documents" SET "updated_at" = '2025-08-14 20:35:13.230938' WHERE "documents"."id" = 3 /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+Redirected to http://localhost:3000/documents
+Completed 302 Found in 103ms (ActiveRecord: 16.5ms (11 queries, 0 cached) | GC: 42.0ms)
+
+
+Started GET "/documents" for 127.0.0.1 at 2025-08-15 02:05:13 +0530
+Processing by DocumentsController#index as TURBO_STREAM
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering documents/index.html.erb within layouts/application
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."user_id" = 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  ↳ app/views/documents/index.html.erb:3
+  Rendered documents/index.html.erb within layouts/application (Duration: 1.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | GC: 0.0ms)
+Completed 200 OK in 11ms (Views: 2.4ms | ActiveRecord: 0.5ms (2 queries, 0 cached) | GC: 1.3ms)
+
+
+Started GET "/d/c61f4cf04d" for 127.0.0.1 at 2025-08-15 02:05:17 +0530
+Processing by DocumentsController#public_show as HTML
+  Parameters: {"share_token"=>"[FILTERED]"}
+  [1m[36mDocument Load (1.6ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."share_token" = 'c61f4cf04d' LIMIT 1 /*action='public_show',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:32:in `public_show'
+  Rendering layout layouts/application.html.erb
+  Rendering documents/public_show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (1.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 3 AND "active_storage_attachments"."record_type" = 'Document' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='public_show',application='EkStore',controller='documents'*/[0m
+  ↳ app/views/documents/public_show.html.erb:4
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 3 LIMIT 1 /*action='public_show',application='EkStore',controller='documents'*/[0m
+  ↳ app/views/documents/public_show.html.erb:6
+  Rendered documents/public_show.html.erb within layouts/application (Duration: 14.6ms | GC: 1.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='public_show',application='EkStore',controller='documents'*/[0m
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 20.1ms | GC: 1.3ms)
+Completed 200 OK in 35ms (Views: 19.5ms | ActiveRecord: 3.5ms (4 queries, 0 cached) | GC: 1.3ms)
+
+
+Started GET "/d/c61f4cf04d" for 127.0.0.1 at 2025-08-15 02:05:55 +0530
+Processing by DocumentsController#public_show as HTML
+  Parameters: {"share_token"=>"[FILTERED]"}
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."share_token" = 'c61f4cf04d' LIMIT 1 /*action='public_show',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:32:in `public_show'
+  Rendering layout layouts/application.html.erb
+  Rendering documents/public_show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 3 AND "active_storage_attachments"."record_type" = 'Document' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='public_show',application='EkStore',controller='documents'*/[0m
+  ↳ app/views/documents/public_show.html.erb:4
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 3 LIMIT 1 /*action='public_show',application='EkStore',controller='documents'*/[0m
+  ↳ app/views/documents/public_show.html.erb:6
+  Rendered documents/public_show.html.erb within layouts/application (Duration: 5.0ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | GC: 0.1ms)
+Completed 200 OK in 15ms (Views: 7.5ms | ActiveRecord: 0.6ms (3 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/assets/application-8b441ae0.css" for 127.0.0.1 at 2025-08-15 02:05:55 +0530
+Started GET "/assets/application-bfcdf840.js" for 127.0.0.1 at 2025-08-15 02:05:55 +0530
+Started GET "/assets/turbo.min-3a2e143f.js" for 127.0.0.1 at 2025-08-15 02:05:55 +0530
+Started GET "/assets/controllers/hello_controller-708796bd.js" for 127.0.0.1 at 2025-08-15 02:05:55 +0530
+Started GET "/assets/controllers/index-ee64e1f1.js" for 127.0.0.1 at 2025-08-15 02:05:55 +0530
+Started GET "/assets/stimulus.min-4b1e420e.js" for 127.0.0.1 at 2025-08-15 02:05:56 +0530
+Started GET "/assets/stimulus-loading-1fc53fe7.js" for 127.0.0.1 at 2025-08-15 02:05:56 +0530
+Started GET "/assets/controllers/application-3affb389.js" for 127.0.0.1 at 2025-08-15 02:05:56 +0530
+Started GET "/" for 127.0.0.1 at 2025-08-15 02:06:08 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | GC: 0.0ms)
+Completed 200 OK in 8ms (Views: 1.4ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/assets/application-8b441ae0.css" for 127.0.0.1 at 2025-08-15 02:06:08 +0530
+Started DELETE "/users/sign_out?_method=delete" for 127.0.0.1 at 2025-08-15 02:06:09 +0530
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='destroy',application='EkStore',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 8ms (ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-08-15 02:06:09 +0530
+Processing by HomeController#index as TURBO_STREAM
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-08-15 02:06:09 +0530
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered /home/mayur/.rvm/gems/ruby-3.3.1/gems/devise-4.9.4/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 3.0ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | GC: 0.3ms)
+Completed 200 OK in 10ms (Views: 4.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.7ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2025-08-15 02:06:11 +0530
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'mayurmahajan2222@gmail.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='EkStore',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 229ms (ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-08-15 02:06:11 +0530
+Processing by HomeController#index as TURBO_STREAM
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | GC: 0.0ms)
+Completed 200 OK in 10ms (Views: 1.4ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/documents" for 127.0.0.1 at 2025-08-15 02:06:12 +0530
+Processing by DocumentsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering documents/index.html.erb within layouts/application
+  [1m[36mDocument Load (0.2ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."user_id" = 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  ↳ app/views/documents/index.html.erb:3
+  Rendered documents/index.html.erb within layouts/application (Duration: 1.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | GC: 0.2ms)
+Completed 200 OK in 10ms (Views: 2.3ms | ActiveRecord: 0.5ms (2 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/documents" for 127.0.0.1 at 2025-08-15 02:06:15 +0530
+Processing by DocumentsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering documents/index.html.erb within layouts/application
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."user_id" = 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  ↳ app/views/documents/index.html.erb:3
+  Rendered documents/index.html.erb within layouts/application (Duration: 1.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | GC: 0.0ms)
+Completed 200 OK in 9ms (Views: 2.4ms | ActiveRecord: 0.6ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/documents/new" for 127.0.0.1 at 2025-08-15 02:06:17 +0530
+Processing by DocumentsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='EkStore',controller='documents'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering documents/new.html.erb within layouts/application
+  Rendered documents/new.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | GC: 0.0ms)
+Completed 200 OK in 9ms (Views: 1.4ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/documents/3?_method=delete" for 127.0.0.1 at 2025-08-15 02:06:22 +0530
+Processing by DocumentsController#destroy as TURBO_STREAM
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='destroy',application='EkStore',controller='documents'*/[0m
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."user_id" = 1 AND "documents"."id" = 3 LIMIT 1 /*action='destroy',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:39:in `set_document'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='destroy',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:27:in `destroy'
+  [1m[36mActiveStorage::Attachment Load (1.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 3 AND "active_storage_attachments"."record_type" = 'Document' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='destroy',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:27:in `destroy'
+  [1m[36mActiveStorage::Attachment Destroy (0.2ms)[0m  [1m[31mDELETE FROM "active_storage_attachments" WHERE "active_storage_attachments"."id" = 3 /*action='destroy',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:27:in `destroy'
+  [1m[36mDocument Destroy (0.2ms)[0m  [1m[31mDELETE FROM "documents" WHERE "documents"."id" = 3 /*action='destroy',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:27:in `destroy'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT /*action='destroy',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:27:in `destroy'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 3 LIMIT 1 /*action='destroy',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:27:in `destroy'
+[ActiveJob] Enqueued ActiveStorage::PurgeJob (Job ID: 6caa302c-c320-44f8-9a83-2bde4db13670) to Async(default) with arguments: #<GlobalID:0x0000770846772fe8 @uri=#<URI::GID gid://ek-store/ActiveStorage::Blob/3>>
+[ActiveJob] ↳ app/controllers/documents_controller.rb:27:in `destroy'
+Redirected to http://localhost:3000/documents
+Completed 302 Found in 35ms (ActiveRecord: 3.9ms (6 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/documents" for 127.0.0.1 at 2025-08-15 02:06:22 +0530
+[ActiveJob] [ActiveStorage::PurgeJob] [6caa302c-c320-44f8-9a83-2bde4db13670]   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 3 LIMIT 1 /*application='EkStore'*/[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [6caa302c-c320-44f8-9a83-2bde4db13670] Performing ActiveStorage::PurgeJob (Job ID: 6caa302c-c320-44f8-9a83-2bde4db13670) from Async(default) enqueued at 2025-08-14T20:36:22.222407283Z with arguments: #<GlobalID:0x0000770846983b70 @uri=#<URI::GID gid://ek-store/ActiveStorage::Blob/3>>
+[ActiveJob] [ActiveStorage::PurgeJob] [6caa302c-c320-44f8-9a83-2bde4db13670]   [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='EkStore',job='ActiveStorage%3A%3APurgeJob'*/[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [6caa302c-c320-44f8-9a83-2bde4db13670]   [1m[36mActiveStorage::Attachment Exists? (2.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = 3 LIMIT 1 /*application='EkStore',job='ActiveStorage%3A%3APurgeJob'*/[0m
+Processing by DocumentsController#index as TURBO_STREAM
+[ActiveJob] [ActiveStorage::PurgeJob] [6caa302c-c320-44f8-9a83-2bde4db13670]   [1m[36mActiveStorage::VariantRecord Load (0.4ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 3 /*application='EkStore',job='ActiveStorage%3A%3APurgeJob'*/[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [6caa302c-c320-44f8-9a83-2bde4db13670]   [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 3 AND "active_storage_attachments"."record_type" = 'ActiveStorage::Blob' AND "active_storage_attachments"."name" = 'preview_image' LIMIT 1 /*application='EkStore',job='ActiveStorage%3A%3APurgeJob'*/[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [6caa302c-c320-44f8-9a83-2bde4db13670]   [1m[36mActiveStorage::Blob Destroy (0.3ms)[0m  [1m[31mDELETE FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 3 /*application='EkStore',job='ActiveStorage%3A%3APurgeJob'*/[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [6caa302c-c320-44f8-9a83-2bde4db13670]   [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*application='EkStore',job='ActiveStorage%3A%3APurgeJob'*/[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [6caa302c-c320-44f8-9a83-2bde4db13670] [36m  Disk Storage (0.1ms) [0m[31mDeleted file from key: rvdrd4k69u8hofyoil3hs5vbkdjk[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [6caa302c-c320-44f8-9a83-2bde4db13670] Performed ActiveStorage::PurgeJob (Job ID: 6caa302c-c320-44f8-9a83-2bde4db13670) from Async(default) in 33.82ms
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering documents/index.html.erb within layouts/application
+  [1m[36mDocument Load (0.2ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."user_id" = 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  ↳ app/views/documents/index.html.erb:3
+  Rendered documents/index.html.erb within layouts/application (Duration: 1.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | GC: 0.0ms)
+Completed 200 OK in 24ms (Views: 1.8ms | ActiveRecord: 0.4ms (2 queries, 0 cached) | GC: 9.9ms)
+
+
+Started GET "/documents/new" for 127.0.0.1 at 2025-08-15 02:06:23 +0530
+Processing by DocumentsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='EkStore',controller='documents'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering documents/new.html.erb within layouts/application
+  Rendered documents/new.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | GC: 0.0ms)
+Completed 200 OK in 9ms (Views: 1.7ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.5ms)
+
+
+Started POST "/documents" for 127.0.0.1 at 2025-08-15 02:06:38 +0530
+Processing by DocumentsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "document"=>{"title"=>"saurabh", "description"=>"faslkgnaga", "file"=>#<ActionDispatch::Http::UploadedFile:0x00007708467d5d78 @tempfile=#<Tempfile:/tmp/RackMultipart20250815-18755-nk920y.1>, @content_type="application/octet-stream", @original_filename="wget-log.1", @headers="Content-Disposition: form-data; name=\"document[file]\"; filename=\"wget-log.1\"\r\nContent-Type: application/octet-stream\r\n">}, "commit"=>"Upload"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='EkStore',controller='documents'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mDocument Create (1.1ms)[0m  [1m[32mINSERT INTO "documents" ("user_id", "title", "description", "file", "created_at", "updated_at", "share_token") VALUES (1, 'saurabh', 'faslkgnaga', NULL, '2025-08-14 20:36:38.578136', '2025-08-14 20:36:38.578136', '61885dec8c') RETURNING "id" /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = 4 AND "active_storage_attachments"."record_type" = 'Document' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 4 AND "active_storage_attachments"."record_type" = 'Document' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Blob Create (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ('17i5zb6pyiq23dpn55fmtb0em0nd', 'wget-log.1', 'application/octet-stream', '{"identified":true}', 'local', 365, 'w3gtYAKQRWz+FVkNWUPb7A==', '2025-08-14 20:36:38.584632') RETURNING "id" /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ('file', 'Document', 4, 4, '2025-08-14 20:36:38.586319') RETURNING "id" /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mDocument Update (0.3ms)[0m  [1m[33mUPDATE "documents" SET "updated_at" = '2025-08-14 20:36:38.588383' WHERE "documents"."id" = 4 /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+[36m  Disk Storage (0.2ms) [0m[32mUploaded file to key: 17i5zb6pyiq23dpn55fmtb0em0nd (checksum: w3gtYAKQRWz+FVkNWUPb7A==)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Blob Update (0.9ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = '{"identified":true,"analyzed":true}' WHERE "active_storage_blobs"."id" = 4 /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = 4 /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mDocument Load (0.3ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."id" = 4 /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mDocument Update (0.2ms)[0m  [1m[33mUPDATE "documents" SET "updated_at" = '2025-08-14 20:36:38.598927' WHERE "documents"."id" = 4 /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+Redirected to http://localhost:3000/documents
+Completed 302 Found in 35ms (ActiveRecord: 6.8ms (11 queries, 0 cached) | GC: 1.9ms)
+
+
+Started GET "/documents" for 127.0.0.1 at 2025-08-15 02:06:38 +0530
+Processing by DocumentsController#index as TURBO_STREAM
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering documents/index.html.erb within layouts/application
+  [1m[36mDocument Load (0.2ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."user_id" = 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  ↳ app/views/documents/index.html.erb:3
+  Rendered documents/index.html.erb within layouts/application (Duration: 1.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | GC: 0.0ms)
+Completed 200 OK in 9ms (Views: 1.9ms | ActiveRecord: 0.4ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/documents/new" for 127.0.0.1 at 2025-08-15 02:06:40 +0530
+Processing by DocumentsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='EkStore',controller='documents'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering documents/new.html.erb within layouts/application
+  Rendered documents/new.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | GC: 0.0ms)
+Completed 200 OK in 8ms (Views: 1.3ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/documents" for 127.0.0.1 at 2025-08-15 02:06:51 +0530
+Processing by DocumentsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "document"=>{"title"=>"mayur", "description"=>"falsfna", "file"=>#<ActionDispatch::Http::UploadedFile:0x0000770846cddf28 @tempfile=#<Tempfile:/tmp/RackMultipart20250815-18755-rwulxb>, @content_type="application/octet-stream", @original_filename="wget-log", @headers="Content-Disposition: form-data; name=\"document[file]\"; filename=\"wget-log\"\r\nContent-Type: application/octet-stream\r\n">}, "commit"=>"Upload"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='EkStore',controller='documents'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mDocument Create (0.8ms)[0m  [1m[32mINSERT INTO "documents" ("user_id", "title", "description", "file", "created_at", "updated_at", "share_token") VALUES (1, 'mayur', 'falsfna', NULL, '2025-08-14 20:36:51.256177', '2025-08-14 20:36:51.256177', '9d75aac91d') RETURNING "id" /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = 5 AND "active_storage_attachments"."record_type" = 'Document' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 5 AND "active_storage_attachments"."record_type" = 'Document' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Blob Create (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ('3j7jafhe0na0of0hj2a2j9p4p0b5', 'wget-log', 'application/octet-stream', '{"identified":true}', 'local', 365, 'sjjc4dUxnbrcCayyZO5DvQ==', '2025-08-14 20:36:51.266420') RETURNING "id" /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ('file', 'Document', 5, 5, '2025-08-14 20:36:51.267612') RETURNING "id" /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mDocument Update (0.2ms)[0m  [1m[33mUPDATE "documents" SET "updated_at" = '2025-08-14 20:36:51.268583' WHERE "documents"."id" = 5 /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+[36m  Disk Storage (0.2ms) [0m[32mUploaded file to key: 3j7jafhe0na0of0hj2a2j9p4p0b5 (checksum: sjjc4dUxnbrcCayyZO5DvQ==)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Blob Update (1.2ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = '{"identified":true,"analyzed":true}' WHERE "active_storage_blobs"."id" = 5 /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = 5 /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mDocument Load (0.1ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."id" = 5 /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mDocument Update (0.2ms)[0m  [1m[33mUPDATE "documents" SET "updated_at" = '2025-08-14 20:36:51.276041' WHERE "documents"."id" = 5 /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT /*action='create',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:19:in `create'
+Redirected to http://localhost:3000/documents
+Completed 302 Found in 33ms (ActiveRecord: 4.7ms (11 queries, 0 cached) | GC: 5.4ms)
+
+
+Started GET "/documents" for 127.0.0.1 at 2025-08-15 02:06:51 +0530
+Processing by DocumentsController#index as TURBO_STREAM
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering documents/index.html.erb within layouts/application
+  [1m[36mDocument Load (0.2ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."user_id" = 1 /*action='index',application='EkStore',controller='documents'*/[0m
+  ↳ app/views/documents/index.html.erb:3
+  Rendered documents/index.html.erb within layouts/application (Duration: 1.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | GC: 0.0ms)
+Completed 200 OK in 8ms (Views: 1.8ms | ActiveRecord: 0.4ms (2 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/d/61885dec8c" for 127.0.0.1 at 2025-08-15 02:06:53 +0530
+Processing by DocumentsController#public_show as HTML
+  Parameters: {"share_token"=>"[FILTERED]"}
+  [1m[36mDocument Load (0.8ms)[0m  [1m[34mSELECT "documents".* FROM "documents" WHERE "documents"."share_token" = '61885dec8c' LIMIT 1 /*action='public_show',application='EkStore',controller='documents'*/[0m
+  ↳ app/controllers/documents_controller.rb:32:in `public_show'
+  Rendering layout layouts/application.html.erb
+  Rendering documents/public_show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (1.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 4 AND "active_storage_attachments"."record_type" = 'Document' AND "active_storage_attachments"."name" = 'file' LIMIT 1 /*action='public_show',application='EkStore',controller='documents'*/[0m
+  ↳ app/views/documents/public_show.html.erb:4
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 4 LIMIT 1 /*action='public_show',application='EkStore',controller='documents'*/[0m
+  ↳ app/views/documents/public_show.html.erb:6
+  Rendered documents/public_show.html.erb within layouts/application (Duration: 7.7ms | GC: 0.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='public_show',application='EkStore',controller='documents'*/[0m
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | GC: 0.0ms)
+Completed 200 OK in 26ms (Views: 13.4ms | ActiveRecord: 3.1ms (4 queries, 0 cached) | GC: 2.5ms)
+
+
