@@ -1,13 +1,13 @@
-<br/>
 <%= link_to "Add New Document", new_document_path, class: "btn btn-primary" %>
 
 <% if @documents.present? %>
-  <h2>this is index</h2>
+  <h2>My Documents</h2>
 
-  <% @documents.each do |file| %>
+  <% @documents.each do |doc| %>
     <p>
-      <%= file.title %> - 
-      <%= link_to "Delete", document_path(file), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+      <%= doc.title %> - 
+      <%= link_to "Delete", document_path(doc), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> |
+      <%= link_to "Share", public_document_url(doc.share_token), target: "_blank" %>
     </p>
   <% end %>
 <% else %>
